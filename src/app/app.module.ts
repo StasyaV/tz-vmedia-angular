@@ -6,15 +6,17 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatTabsModule } from '@angular/material/tabs';
-import { PermissionMenuComponent } from './permission-menu/permission-menu.component';
+import { PermissionMenuComponent } from './main-content/permission-menu/permission-menu.component';
 import {MatIconModule} from '@angular/material/icon';
-import { PermissionMenuContentComponent } from './permission/permission-menu-content/permission-menu-content.component';
+import { PermissionMainContentComponent } from './main-content/permission-main-content/permission-main-content.component';
+import { MainContentComponent } from './main-content/main-content.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PermissionMenuComponent,
-    PermissionMenuContentComponent
+    PermissionMainContentComponent,
+    MainContentComponent
   ],
   imports: [
     BrowserModule,

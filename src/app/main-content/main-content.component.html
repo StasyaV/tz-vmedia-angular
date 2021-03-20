@@ -1,0 +1,5 @@
+<div class="main-content">
+  <app-permission-menu *ngIf="activeLink == 'Groups'" [menuItems]="groupsList"></app-permission-menu>
+  <app-permission-menu *ngIf="activeLink == 'Roles'" [menuItems]="rolesList"></app-permission-menu>
+  <app-permission-main-content></app-permission-main-content>
+</div>

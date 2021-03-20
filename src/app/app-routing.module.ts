@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PermissionMenuComponent } from './permission-menu/permission-menu.component';
+import { PermissionMenuComponent } from './main-content/permission-menu/permission-menu.component';
 
 const routes: Routes = [
   {
