@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-main-content',
@@ -6,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main-content.component.sass']
 })
 export class MainContentComponent implements OnInit {
-
+  @Input()
+  activeLink!: string;
+  menuItems!: [];
   constructor() { }
 
   ngOnInit(): void {
@@ -23,5 +25,5 @@ export class MainContentComponent implements OnInit {
     {name: 'Dust cniffer', checked: false, editable: false}, 
     {name: 'Pocker cheater', checked: false, editable: false}, {name: 'Manager - Billing', checked: false, editable: false},
     {name: 'Drug user', checked: false, editable: false}, {name: 'Support - Tech', checked: false, editable: false},
-  ];
+  ]; 
 }

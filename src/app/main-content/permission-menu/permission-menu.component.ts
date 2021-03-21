@@ -12,12 +12,10 @@ export interface menuItem {
   styleUrls: ['./permission-menu.component.sass']
 })
 export class PermissionMenuComponent implements OnInit {
-  @Input() menuItems = [
-    {name: 'First Element', checked: true, editable: false}
-  ];
+  @Input()
+  menuItems!: menuItem[];
   count: number = 0;
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
   }
@@ -27,23 +25,24 @@ export class PermissionMenuComponent implements OnInit {
     item.editable = false;
   }
 
-  onMenuItemClick(event: { target: {id: string}}) {
-    for (let i = 0; i < this.menuItems.length; i++) {
-      this.clearCheckedItems(this.menuItems[i]);
-      event.target.id == this.menuItems[i].name ? this.menuItems[i].checked = true : false;
-    }   
+  onMenuItemClick(item: menuItem) {
+    this.menuItems.forEach((menuItem: menuItem) => this.clearCheckedItems(menuItem));
+    return item.checked = !item.checked;   
   }
 
   changeName(event: { target: { value: string; }; }, item: menuItem) {
-    console.log(name);
     item.name = event.target.value;
     item.editable = !item.editable;
-    console.log(item);
   }
 
-  addItem() {
+  makeItemEditable(item: menuItem) {
+    return item.editable = !item.editable;
+  }
+
+  addItem(items: menuItem[]) {
+    console.log(items);
+    !items ? this.menuItems = [] : this.menuItems.forEach((menuItem: menuItem) => this.clearCheckedItems(menuItem));
     this.count++;
-    this.menuItems.forEach((menuItem) => this.clearCheckedItems(menuItem));
     this.menuItems.push({name: 'New Element-' + this.count, checked: true, editable: true})
   }
 }

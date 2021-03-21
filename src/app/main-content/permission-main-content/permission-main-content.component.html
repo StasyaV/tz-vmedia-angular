@@ -21,10 +21,10 @@
     <mat-checkbox class="item__check" [checked]="item.checked">{{item.name}}</mat-checkbox>
     <p class="item__tag">{{item.tag}}</p>
   </div>
-  <div *ngIf="itemsList.length > itemsPerPage" class="content__pagination pagination">
+  <!-- <div *ngIf="itemsList.length > itemsPerPage" class="content__pagination pagination">
     <div class="pagination__item" *ngFor="let page of pagesCount;let idx = index">{{idx+1}}</div>
-  </div>
-  <div *ngIf="itemsList.length == 0" class="content__no-data">
+  </div> -->
+  <div *ngIf="!itemsList" class="content__no-data">
     <p class="content__no-data-text">There is nothing to change</p>
   </div>
 </section>

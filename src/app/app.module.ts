@@ -6,8 +6,10 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatTabsModule } from '@angular/material/tabs';
-import { PermissionMenuComponent } from './main-content/permission-menu/permission-menu.component';
 import {MatIconModule} from '@angular/material/icon';
+import {MatSelectModule} from '@angular/material/select';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { PermissionMenuComponent } from './main-content/permission-menu/permission-menu.component';
 import { PermissionMainContentComponent } from './main-content/permission-main-content/permission-main-content.component';
 import { MainContentComponent } from './main-content/main-content.component';
 
@@ -23,7 +25,9 @@ import { MainContentComponent } from './main-content/main-content.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatTabsModule,
-    MatIconModule
+    MatIconModule,
+    MatCheckboxModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
