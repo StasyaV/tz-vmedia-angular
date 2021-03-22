@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {PageEvent} from '@angular/material/paginator';
 
@@ -18,7 +18,7 @@ interface listItem {
   templateUrl: './permission-main-content.component.html',
   styleUrls: ['./permission-main-content.component.sass']
 })
-export class PermissionMainContentComponent implements OnInit {
+export class PermissionMainContentComponent implements OnInit, OnChanges {
   form: FormGroup;
   @Input()
   title!: string;
@@ -47,7 +47,6 @@ export class PermissionMainContentComponent implements OnInit {
   endRow: number;
 
   constructor() {
-    console.log('1');
     this.form = new FormGroup({
       filter: this.filterControl
     });
@@ -56,12 +55,13 @@ export class PermissionMainContentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('2');
     this.items = this._itemsList;
     this.length = this.items.length;
-    
-    console.log('come',this.itemsList);
-    console.log(this.items);
+  }
+
+  ngOnChanges(changes: any) {
+    this.items = changes.itemsList.currentValue;
+    this.length = this.items.length;
   }
 
   checkItem(item: listItem) {

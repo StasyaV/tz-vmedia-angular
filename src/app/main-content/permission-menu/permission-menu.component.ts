@@ -46,7 +46,6 @@ export class PermissionMenuComponent implements OnInit {
   }
 
   addItem(items: menuItem[]) {
-    console.log(items);
     !items ? this.menuItems = [] : this.menuItems.forEach((menuItem: menuItem) => this.clearCheckedItems(menuItem));
     this.count++;
     this.menuItems.push({name: 'New Element-' + this.count, checked: true, editable: true, connections: []})

@@ -28,7 +28,7 @@
         [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)">
     </mat-paginator>
   </div>
-  <div *ngIf="!itemsList" class="content__no-data">
+  <div *ngIf="items.length == 0" class="content__no-data">
     <p class="content__no-data-text">There is nothing to change</p>
   </div>
 </section>
