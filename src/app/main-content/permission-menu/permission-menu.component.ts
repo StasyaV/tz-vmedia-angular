@@ -3,7 +3,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export interface menuItem {
   name?: string,
   checked?: boolean,
-  editable?: boolean
+  editable?: boolean,
+  connections: []
 }
 
 @Component({
@@ -14,10 +15,14 @@ export interface menuItem {
 export class PermissionMenuComponent implements OnInit {
   @Input()
   menuItems!: menuItem[];
+  @Input()
+  title!: string;
+  itemConections: [] = [];
   count: number = 0;
   constructor() {}
 
   ngOnInit(): void {
+    this.itemConections = this.menuItems.filter((it) => it.checked)[0].connections;
   }
 
   clearCheckedItems(item: menuItem) {
@@ -27,7 +32,8 @@ export class PermissionMenuComponent implements OnInit {
 
   onMenuItemClick(item: menuItem) {
     this.menuItems.forEach((menuItem: menuItem) => this.clearCheckedItems(menuItem));
-    return item.checked = !item.checked;   
+    this.itemConections = item.connections;
+    return item.checked = !item.checked;
   }
 
   changeName(event: { target: { value: string; }; }, item: menuItem) {
@@ -43,6 +49,6 @@ export class PermissionMenuComponent implements OnInit {
     console.log(items);
     !items ? this.menuItems = [] : this.menuItems.forEach((menuItem: menuItem) => this.clearCheckedItems(menuItem));
     this.count++;
-    this.menuItems.push({name: 'New Element-' + this.count, checked: true, editable: true})
+    this.menuItems.push({name: 'New Element-' + this.count, checked: true, editable: true, connections: []})
   }
 }

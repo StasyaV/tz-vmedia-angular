@@ -1,29 +1,35 @@
-<div class="menu">
-  <div *ngIf="menuItems" class="menu__container">
-    <div class="menu__item" *ngFor="let item of menuItems" [routerLink]="item">
-      <div class="menu__item-name">
-        <input class="menu__item-check visually-hidden" (click)="onMenuItemClick(item)" type="radio" name="menu-item" 
-          id={{item.name}} [attr.checked]="item.checked ? 'checked' : null">
-        <label *ngIf="!item.editable" for={{item.name}}>{{item.name}}</label>
-      <input *ngIf="item.editable" (change)="changeName($event, item)" 
+<div class="main-content">
+  <div class="menu">
+    <div *ngIf="menuItems" class="menu__container">
+      <div class="menu__item" *ngFor="let item of menuItems">
+        <div class="menu__item-name">
+          <input class="menu__item-check visually-hidden" (click)="onMenuItemClick(item)" type="radio" name="menu-item" 
+            id={{item.name}} [attr.checked]="item.checked ? 'checked' : null">
+          <label *ngIf="!item.editable" for={{item.name}}>{{item.name}}</label>
+          <input *ngIf="item.editable" (change)="changeName($event, item)" 
               class="menu__item-change-name" type="text" value={{item.name}}>
+        </div>
+        <button *ngIf="item.checked" (click)="makeItemEditable(item)" class="menu__item-edit-btn">
+          <mat-icon aria-hidden="false" aria-label="Edit name">edit</mat-icon>
+        </button>
       </div>
-      <button *ngIf="item.checked" (click)="makeItemEditable(item)" class="menu__item-edit-btn">
-        <mat-icon aria-hidden="false" aria-label="Edit name">edit</mat-icon>
-      </button>
-    </div>
-    <button class="menu__add-btn" (click)="addItem(menuItems)">
-      <mat-icon aria-hidden="false" aria-label="Add item">add</mat-icon>
-      Add New Item
-    </button>
-  </div>
-  <div [class.visually-hidden]="menuItems" class="menu__no-data">
-    <div class="menu__no-data-content">
-      <p>No items added</p>
-      <button class="menu__add-btn" (click)="addItem()">
+      <button class="menu__add-btn" (click)="addItem(menuItems)">
         <mat-icon aria-hidden="false" aria-label="Add item">add</mat-icon>
-        Add First Item
+        Add New Item
       </button>
     </div>
+    <div [class.visually-hidden]="menuItems" class="menu__no-data">
+      <div class="menu__no-data-content">
+        <p>No items added</p>
+        <button class="menu__add-btn" (click)="addItem([])">
+          <mat-icon aria-hidden="false" aria-label="Add item">add</mat-icon>
+          Add First Item
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- вставить в контейнер, где есть доступ к итем -->
+  <div class="main-content__container">
+    <app-permission-main-content [title]="title" [itemsList]="itemConections"></app-permission-main-content>
   </div>
 </div>
