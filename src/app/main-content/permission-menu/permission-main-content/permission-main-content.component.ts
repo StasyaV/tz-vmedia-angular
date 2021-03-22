@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import {PageEvent} from '@angular/material/paginator';
+import { HttpService } from '../../../http.service';
 
 interface Filter {
   name?: string;
@@ -11,57 +11,64 @@ interface listItem {
   name?: string;
   checked?: boolean;
   tag?: string;
+  id?: number;
 }
 
 @Component({
   selector: 'app-permission-main-content',
   templateUrl: './permission-main-content.component.html',
-  styleUrls: ['./permission-main-content.component.sass']
+  styleUrls: ['./permission-main-content.component.sass'],
+  providers: [HttpService]
 })
 export class PermissionMainContentComponent implements OnInit, OnChanges {
   form: FormGroup;
-  @Input()
-  title!: string;
-  @Input()
-  _itemsList!: listItem[];
-  @Input()
-    set itemsList(items: listItem[]) {
-      this._itemsList = items;
-  }
-  get itemsList() { 
-    return this._itemsList;
-  }
-
+  @Input() title!: string;
+  @Input() id!: string;
+  itemsList: listItem[] = [];
 
   filterList: Filter[] = [{name: 'showAll', value: 'Show all'}, 
     {name: 'showChecked', value: 'Show Checked'}, {name: 'showBilling', value: 'Show "Billing"'}, 
     {name: 'showAdmin', value: 'Show "Admin"'}, {name: 'showGod', value: 'Show "God"'}];
 
   filterControl = new FormControl(this.filterList[0].name);
-  items: listItem[] = [];
-  length = this.items.length;
+  search = new FormControl();
+  filteredItems: listItem[] = [];
+  length = this.filteredItems.length;
   defaultPageSize = 5;
   pageSize = this.defaultPageSize;
   pageSizeOptions: number[] = [5, 10, 25, 100];
   startRow: number;
   endRow: number;
+  allItems!: [];
 
-  constructor() {
+  constructor(private httpService: HttpService) {
     this.form = new FormGroup({
-      filter: this.filterControl
+      filter: this.filterControl,
+      search: this.search
     });
     this.startRow = 0;
     this.endRow = this.pageSize - 1;
   }
 
   ngOnInit(): void {
-    this.items = this._itemsList;
-    this.length = this.items.length;
+      this.httpService.getData('main-content-data').subscribe((data: any) => {
+        this.allItems = data.content;
+        this.itemsList = this.allItems.filter((it: any) => this.id == it.id)[0].items;
+        this.length = this.itemsList.length;
+        this.filteredItems = this.itemsList;
+        return;
+    });
   }
 
   ngOnChanges(changes: any) {
-    this.items = changes.itemsList.currentValue;
-    this.length = this.items.length;
+    this.id = changes.id.currentValue;
+    this.form.reset();
+    this.filterControl = new FormControl(this.filterList[0].name);
+    if (this.allItems) {
+      this.itemsList = this.allItems.filter((it: any) => this.id == it.id)[0].items;
+      this.filteredItems = this.itemsList;
+      this.length = this.itemsList.length;
+    }
   }
 
   checkItem(item: listItem) {
@@ -69,7 +76,7 @@ export class PermissionMainContentComponent implements OnInit, OnChanges {
   }
 
   getFilteredDataBySearch(event: { target: { value: string; }; } ) {
-    this.items = this.itemsList.filter((item: any) => {
+    this.filteredItems = this.itemsList.filter((item: any) => {
       return item.name.toLowerCase().indexOf(event.target.value.toLowerCase()) > -1;
     });
   };
@@ -77,17 +84,17 @@ export class PermissionMainContentComponent implements OnInit, OnChanges {
   getFilteredDataBySelect(event: { value: string; }) {
     switch (event.value) {
       case 'showAll':
-        return this.items = this.itemsList;
+        return this.filteredItems = this.itemsList;
       case 'showChecked':
-        return this.items = this.itemsList.filter((item: listItem) => item.checked);
+        return this.filteredItems = this.itemsList.filter((item: listItem) => item.checked);
       case 'showBilling':
-        return this.items = this.itemsList.filter((item: listItem) => item.tag == 'Billing');
+        return this.filteredItems = this.itemsList.filter((item: listItem) => item.tag == 'Billing');
       case 'showAdmin':
-        return this.items = this.itemsList.filter((item: listItem) => item.tag == 'Admin');
+        return this.filteredItems = this.itemsList.filter((item: listItem) => item.tag == 'Admin');
       case 'showGod':
-        return this.items = this.itemsList.filter((item: listItem) => item.tag == 'God mode');
+        return this.filteredItems = this.itemsList.filter((item: listItem) => item.tag == 'God mode');
       default:
-        return this.items = this.itemsList;
+        return this.filteredItems = this.itemsList;
       }
   }
 
@@ -103,8 +110,8 @@ export class PermissionMainContentComponent implements OnInit, OnChanges {
     this.startRow = this.pageSize * event.pageIndex;
     this.endRow = (this.pageSize * event.pageIndex) + 1;
 
-    if (this.endRow > this.items.length) {
-      this.endRow = this.items.length - 1;
+    if (this.endRow > this.filteredItems.length) {
+      this.endRow = this.filteredItems.length - 1;
     }
   }
 

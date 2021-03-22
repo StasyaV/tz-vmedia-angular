@@ -4,7 +4,7 @@
     <form class="content__filter-form" [formGroup]="form">
       <div class="content__filter-search search">
         <input class="search__input" placeholder="Search" type="text"
-          (input)="getFilteredDataBySearch($event)"/>
+          (input)="getFilteredDataBySearch($event)" [formControl]="search"/>
         <mat-icon class="search__ico">search</mat-icon>
       </div>
       <mat-form-field appearance="fill">
@@ -17,18 +17,18 @@
       </mat-form-field>
     </form>
   </div>
-  <div *ngFor="let item of items;let idx = index" 
+  <div *ngFor="let item of filteredItems;let idx = index" 
         [class.visually-hidden]="idx < startRow || idx > endRow" 
         class="content__items item">
     <mat-checkbox (change)="checkItem(item)" class="item__check" [checked]="item.checked">{{item.name}}</mat-checkbox>
     <p class="item__tag">{{item.tag}}</p>
   </div>
-  <div *ngIf="items.length > defaultPageSize" class="content__pagination">
+  <div *ngIf="filteredItems.length > defaultPageSize" class="content__pagination">
     <mat-paginator [length]="length" [pageSize]="pageSize" 
         [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)">
     </mat-paginator>
   </div>
-  <div *ngIf="items.length == 0" class="content__no-data">
+  <div *ngIf="filteredItems.length == 0" class="content__no-data">
     <p class="content__no-data-text">There is nothing to change</p>
   </div>
 </section>

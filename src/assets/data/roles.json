@@ -1,0 +1,40 @@
+{
+  "roles": [
+    {
+      "name": "Pizza Editor",
+      "checked": true,
+      "editable": false,
+      "id": 10
+    },
+    {
+      "name": "Dust cniffer",
+      "checked": false,
+      "editable": false,
+      "id": 11
+    },
+    {
+      "name": "Pocker cheater",
+      "checked": false,
+      "editable": false,
+      "id": 12
+    },
+    {
+      "name": "Manager - Billing",
+      "checked": false,
+      "editable": false,
+      "id": 13
+    },
+    {
+      "name": "Drug user",
+      "checked": false,
+      "editable": false,
+      "id": 14
+    },
+    {
+      "name": "Support - Tech",
+      "checked": false,
+      "editable": false,
+      "id": 15
+    }
+  ]
+}
