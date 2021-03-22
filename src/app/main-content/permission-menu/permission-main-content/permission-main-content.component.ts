@@ -69,7 +69,7 @@ export class PermissionMainContentComponent implements OnInit, OnChanges {
   }
 
   getFilteredDataBySearch(event: { target: { value: string; }; } ) {
-    this.items = this.itemsList.filter((item: listItem) => {
+    this.items = this.itemsList.filter((item: any) => {
       return item.name.toLowerCase().indexOf(event.target.value.toLowerCase()) > -1;
     });
   };
