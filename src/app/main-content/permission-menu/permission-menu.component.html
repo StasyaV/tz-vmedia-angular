@@ -1,6 +1,18 @@
 <div class="main-content">
   <div class="menu">
-    <div *ngIf="menuItems" class="menu__container">
+    <div class="menu__mobile-view">
+      <div *ngIf="checkedItem" class="menu__item">
+        <div class="menu__item-name">
+          <input class="menu__item-check visually-hidden" type="radio" name="menu-item" 
+            id={{id}} [attr.checked]="checkedItem.checked">
+          <label for={{checkedItem.name}}>{{checkedItem.name}}</label>
+        </div>
+        <button (click)="menuVisible = !menuVisible" class="menu__button">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div *ngIf="menuItems" class="menu__container" [class.menu__visible]="!menuVisible">
       <div class="menu__item" *ngFor="let item of menuItems">
         <div class="menu__item-name">
           <input class="menu__item-check visually-hidden" (click)="onMenuItemClick(item)" type="radio" name="menu-item" 

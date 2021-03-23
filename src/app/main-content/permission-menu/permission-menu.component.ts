@@ -17,24 +17,32 @@ export interface menuItem {
 })
 
 export class PermissionMenuComponent implements OnInit {
-  @Input() title!: string;
   @Input() menu: string = 'Groups';
   menuItems!: menuItem[];
   count: number = 0;
   id!: number;
+  title!: string;
+  checkedItem!: menuItem;
+  menuVisible: boolean = false;
 
   constructor(private httpService: HttpService){}
 
   ngOnInit(): void {
     if (this.menu == 'Groups') {
-      this.httpService.getData('groups').subscribe((data: any) => {
-        this.id = data.groups.filter((it: any) => it.checked)[0].id;
-        return  this.menuItems = data.groups;
+      this.title = 'Roles';
+      this.httpService.getData('groups').subscribe((data: any) => {        
+        this.checkedItem = data.groups.filter((it: any) => it.checked)[0];
+        this.id = this.checkedItem.id;
+        this.menuItems = data.groups;
+        return;
       });
     } else if (this.menu == 'Roles') {
+      this.title = 'Groups';
       this.httpService.getData('roles').subscribe((data: any) => {
-        this.id = data.roles.filter((it: any) => it.checked)[0].id;
-        return this.menuItems = data.roles;
+        this.checkedItem = data.roles.filter((it: any) => it.checked)[0];
+        this.id = this.checkedItem.id;
+        this.menuItems = data.roles;
+        return;
       });
     }
   }
@@ -46,8 +54,10 @@ export class PermissionMenuComponent implements OnInit {
 
   onMenuItemClick(item: menuItem) {
     this.menuItems.forEach((menuItem: menuItem) => this.clearCheckedItems(menuItem));
+    this.checkedItem = item;
     this.id = item.id;
     item.checked = !item.checked;
+    this.menuVisible = false;
     return;
   }
 

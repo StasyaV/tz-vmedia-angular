@@ -9,20 +9,24 @@
 
 .content__header
   display: flex
-  justify-content: space-between
-  align-items: center
+  flex-direction: column
   width: 100%
+  margin-bottom: 40px
 
 .content__filter-form
   display: flex
-  align-items: center
+  flex-direction: column-reverse
+
+.content__items
+  margin-bottom: 40px
 
 .search
   display: flex
   align-items: center
-  margin-right: 10px
+  max-width: 280px
 
 .search__input
+  flex-grow: 1
   padding: 10px 5px
   color: inherit
   font-size: inherit
@@ -40,6 +44,10 @@
   border: 1px solid $border-color
   border-radius: 0 6px 6px 0
   border-left: none
+
+.content__title
+  margin: 0
+  margin-bottom: 20px
   
 .item
   display: flex
@@ -54,5 +62,45 @@
   padding: 5px
   background-color: $tags-background
 
-.content__pagination
+.content__footer
   margin-top: auto
+
+::ng-deep
+  .mat-paginator-container
+    align-items: stretch!important
+    justify-content: space-between!important
+    padding: 10px!important
+
+  .mat-paginator-page-size
+    flex-direction: column!important
+
+  .mat-paginator-range-label
+    margin: 0!important
+
+  .mat-form-field
+    max-width: 280px
+
+@media (min-width: $tablet-width)
+  .content__header
+    margin-bottom: 5px
+
+  .content__filter-form
+    flex-direction: row
+  
+  .search
+    margin-right: 10px
+  
+  ::ng-deep
+    .mat-paginator-container
+      align-items: center!important
+
+    .mat-paginator-page-size
+      flex-direction: row!important
+
+    .mat-paginator-range-label
+      margin: 0!important
+
+@media (min-width: $desktop-width)
+  .content__header
+    flex-direction: row
+    justify-content: space-between

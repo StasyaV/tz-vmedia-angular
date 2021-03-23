@@ -17,13 +17,15 @@
       </mat-form-field>
     </form>
   </div>
-  <div *ngFor="let item of filteredItems;let idx = index" 
+  <div class="content__items">
+    <div *ngFor="let item of filteredItems;let idx = index" 
         [class.visually-hidden]="idx < startRow || idx > endRow" 
         class="content__items item">
     <mat-checkbox (change)="checkItem(item)" class="item__check" [checked]="item.checked">{{item.name}}</mat-checkbox>
     <p class="item__tag">{{item.tag}}</p>
   </div>
-  <div *ngIf="filteredItems.length > defaultPageSize" class="content__pagination">
+  </div>
+  <div *ngIf="filteredItems.length > defaultPageSize" class="content__footer pagination">
     <mat-paginator [length]="length" [pageSize]="pageSize" 
         [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)">
     </mat-paginator>
