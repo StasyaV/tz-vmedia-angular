@@ -20,7 +20,7 @@ export class PermissionMenuComponent implements OnInit {
   @Input() menu: string = 'Groups';
   menuItems!: menuItem[];
   count: number = 0;
-  id!: number;
+  id!: number | undefined;
   title!: string;
   checkedItem!: menuItem;
   menuVisible: boolean = false;
