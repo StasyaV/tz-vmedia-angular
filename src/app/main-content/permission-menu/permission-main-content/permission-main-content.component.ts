@@ -65,7 +65,12 @@ export class PermissionMainContentComponent implements OnInit, OnChanges {
     this.form.reset();
     this.filterControl = new FormControl(this.filterList[0].name);
     if (this.allItems) {
-      this.itemsList = this.allItems.filter((it: any) => this.id == it.id)[0].items;
+      if(!this.allItems.filter((it: any) => this.id == it.id)[0]) {
+        this.itemsList = [];
+      } else {
+        this.itemsList = this.allItems.filter((it: any) => this.id == it.id)[0].items;
+      }
+      
       this.filteredItems = this.itemsList;
       this.length = this.itemsList.length;
     }
