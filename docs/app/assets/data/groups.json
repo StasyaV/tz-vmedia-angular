@@ -1,0 +1,52 @@
+{
+  "groups": [
+    {
+      "name": "Admins",
+      "checked": true,
+      "editable": false,
+      "id": 1
+    },
+    {
+      "name": "General Managers",
+      "checked": false,
+      "editable": false,
+      "id": 2
+    },
+    {
+      "name": "Managers - Tech",
+      "checked": false,
+      "editable": false,
+      "id": 3
+    },
+    {
+      "name": "Manager - Billing",
+      "checked": false,
+      "editable": false,
+      "id": 4
+    },
+    {
+      "name": "Manager - Sales",
+      "checked": false,
+      "editable": false,
+      "id": 5
+    },
+    {
+      "name": "Support - Tech",
+      "checked": false,
+      "editable": false,
+      "id": 7
+    },
+    {
+      "name": "Support - Billing",
+      "checked": false,
+      "editable": false,
+      "id": 8
+    },
+    {
+      "name": "Support - Sales",
+      "checked": false,
+      "editable": false,
+      "id": 9
+    }
+  ]
+}

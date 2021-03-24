@@ -39,7 +39,7 @@ export class PermissionMainContentComponent implements OnInit, OnChanges {
   pageSizeOptions: number[] = [5, 10, 25, 100];
   startRow: number;
   endRow: number;
-  allItems!: [];
+  allItems!: any[];
 
   constructor(private httpService: HttpService) {
     this.form = new FormGroup({

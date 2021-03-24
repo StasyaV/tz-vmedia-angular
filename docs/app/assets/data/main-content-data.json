@@ -1,0 +1,217 @@
+{
+  "content": [
+    {
+      "id": 1,
+      "items": [
+        {
+          "name": "Pizza Editor",
+          "checked": true,
+          "tag": "Billing"
+        },
+        {
+          "name": "Pizza Editor",
+          "checked": false,
+          "tag": "Admin"
+        },
+        {
+          "name": "Pocker cheater",
+          "checked": true,
+          "tag": "Billing"
+        },
+        {
+          "name": "Drug user",
+          "checked": false,
+          "tag": "God mode"
+        },
+        {
+          "name": "God",
+          "checked": true,
+          "tag": "God mode"
+        },
+        {
+          "name": "Editor",
+          "checked": false,
+          "tag": "Billing"
+        },
+        {
+          "name": "User",
+          "checked": true,
+          "tag": "Admin"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "items": [
+        {
+          "name": "Pizza Editor",
+          "checked": true,
+          "tag": "Admin"
+        },
+        {
+          "name": "Cheater",
+          "checked": true,
+          "tag": "Billing"
+        },
+        {
+          "name": "God",
+          "checked": true,
+          "tag": "God mode"
+        },
+        {
+          "name": "Editor",
+          "checked": false,
+          "tag": "Billing"
+        },
+        {
+          "name": "User",
+          "checked": true,
+          "tag": "Admin"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "items": [
+        {
+          "name": "Pizza Editor",
+          "checked": true,
+          "tag": "Billing"
+        },
+        {
+          "name": "Pizza Editor",
+          "checked": false,
+          "tag": "Admin"
+        },
+        {
+          "name": "Pocker cheater",
+          "checked": true,
+          "tag": "Billing"
+        },
+        {
+          "name": "Drug user",
+          "checked": false,
+          "tag": "God mode"
+        },
+        {
+          "name": "God",
+          "checked": true,
+          "tag": "God mode"
+        },
+        {
+          "name": "Editor",
+          "checked": false,
+          "tag": "Billing"
+        },
+        {
+          "name": "User",
+          "checked": true,
+          "tag": "Admin"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "items": [
+        {
+          "name": "Editor",
+          "checked": false,
+          "tag": "Billing"
+        },
+        {
+          "name": "User",
+          "checked": true,
+          "tag": "Admin"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "items": [
+        {
+          "name": "Editor",
+          "checked": false,
+          "tag": "Billing"
+        },
+        {
+          "name": "User",
+          "checked": true,
+          "tag": "Admin"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "items": [
+        {
+          "name": "Admin",
+          "checked": false,
+          "tag": "Billing"
+        },
+        {
+          "name": "Manager - Sales",
+          "checked": true,
+          "tag": "Admin"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "items": [
+        {
+          "name": "Admin",
+          "checked": false,
+          "tag": "Billing"
+        },
+        {
+          "name": "Manager - Sales",
+          "checked": true,
+          "tag": "Admin"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "items": []
+    },
+    {
+      "id": 9,
+      "items": []
+    },
+    {
+      "id": 10,
+      "items": [
+        {
+          "name": "Admin",
+          "checked": false,
+          "tag": "Billing"
+        },
+        {
+          "name": "Manager - Sales",
+          "checked": true,
+          "tag": "Admin"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "items": []
+    },
+    {
+      "id": 12,
+      "items": []
+    },
+    {
+      "id": 13,
+      "items": []
+    },
+    {
+      "id": 14,
+      "items": []
+    },
+    {
+      "id": 15,
+      "items": []
+    }
+  ]
+}
